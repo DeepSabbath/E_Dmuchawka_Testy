@@ -3,6 +3,7 @@
  */
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Okienko2 extends JFrame{
 
@@ -29,5 +30,14 @@ public class Okienko2 extends JFrame{
         // coKliknieto.setText(Okienko1.button2.getText());
         coKliknieto.setBounds(20,120,300,20);
         add(coKliknieto);
+    }
+
+    public Dimension losujPolozenie()
+    {
+        Random rand = new Random();
+        int wys = rand.nextInt(1280);
+        int sze = rand.nextInt(800);
+        Dimension wym = new Dimension(wys, sze);
+        return wym;
     }
 }

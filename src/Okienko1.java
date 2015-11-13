@@ -4,7 +4,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- import javax.swing.*;
+import java.util.Random;
+import javax.swing.*;
 
 
 public class Okienko1 extends JFrame{
@@ -32,16 +33,15 @@ public class Okienko1 extends JFrame{
         button1.setSize(120,120);
         button1.addActionListener(new Zdarzenie1());  		// utworzenie listenera
         add(button1);                                       // dodanie buttona do okienka
-        Integer wysb1 = button1.getHeight();
+
 
         label1 = new JLabel();
         label1.setLocation(200,200);
         label1.setSize(100,50);
-        label1.setText(wysb1.toString());
         add(label1);
 
         button2 = new JButton("dupa");
-        button2.setLocation(50,180);
+        button2.setLocation(losujPolozenie());
         button2.setSize(120,120);
         button2.addActionListener(new buttonClick());
         add(button2);
@@ -57,9 +57,8 @@ public class Okienko1 extends JFrame{
     {
         public void actionPerformed(ActionEvent e)
         {
-            Okienko2 o = new Okienko2(400,400);
-            o.iloscOtworzen++;
-            o.setVisible(true);
+            CzasKlikniecia c = new CzasKlikniecia(700,700);
+            c.setVisible(true);
         }
     }
 
@@ -85,5 +84,14 @@ public class Okienko1 extends JFrame{
     public String getButtonText(JButton b)
     {
         return b.getText();
+    }
+
+    public Point losujPolozenie()
+    {
+        Random rand = new Random();
+        int wys = rand.nextInt(1280);
+        int sze = rand.nextInt(800);
+        Point pol = new Point(wys, sze);
+        return pol;
     }
 }
