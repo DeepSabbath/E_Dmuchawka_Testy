@@ -4,8 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
 import java.util.*;
-import java.util.Timer;
+
 
 /**
  * Created by Amadeusz on 13.11.2015.
@@ -14,8 +15,9 @@ public class CzasKlikniecia extends JFrame {
 
     JButton button1;
     Integer czas = 0;
-    java.util.Timer timer1 = new java.util.Timer();
     JLabel czasLbl;
+    javax.swing.Timer timer1 = new javax.swing.Timer(1000, new timerListener());
+
 
     public CzasKlikniecia(int width, int height)
     {
@@ -48,17 +50,19 @@ public class CzasKlikniecia extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-
+//            timer1.schedule (timer1_task, 0, 500);
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
-            timer1.schedule (timer1_task, 0, 500);
+            timer1.start();
+
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            timer1.cancel();
+
+            timer1.stop();
         }
 
         @Override
@@ -81,10 +85,16 @@ public class CzasKlikniecia extends JFrame {
         }
 
     }
-
-    public void czasKliknieciaButtona ()
+    public void liczCzas()
     {
-        MyTimerTask timer1_task = new MyTimerTask();
-        timer1.schedule (timer1_task, 0, 500);
+
     }
+    class timerListener implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e) {
+            czas++;
+            czasLbl.setText(czas.toString());
+        }
+    }
+
 }
