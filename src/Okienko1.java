@@ -94,7 +94,7 @@ public class Okienko1 extends JFrame{
             try
             {
                 String t = ((JButton)e.getSource()).getText();
-                o.coKliknieto.setText("Kliknieto button z napidfdfssem " + t);
+                o.coKliknieto.setText("Kliknieto button z napisem " + t);
             }
             catch (Exception wyjatek)
             {
