@@ -96,5 +96,9 @@ public class CzasKlikniecia extends JFrame {
             czasLbl.setText(czas.toString());
         }
     }
+    public String przekazTekst()
+    {
+        return  czasLbl.getText();
+    }
 
 }

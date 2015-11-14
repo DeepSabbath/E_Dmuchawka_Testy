@@ -14,6 +14,8 @@ public class Okienko1 extends JFrame{
     JLabel label1;
     static JButton button2;
     JButton button3;
+    JButton getTextBTN;
+    CzasKlikniecia c;
 
     public Okienko1(int width, int height)
     {
@@ -51,14 +53,35 @@ public class Okienko1 extends JFrame{
         button3.setSize(120,120);
         button3.addActionListener(new buttonClick());
         add(button3);
+
+        getTextBTN = new JButton();
+        getTextBTN.setLocation(300,300);
+        getTextBTN.setSize(120,120);
+        getTextBTN.addActionListener(new pobierzTekst());
+        add(getTextBTN);
     }
 
     class Zdarzenie1 implements ActionListener				// definicja dzia³ania buttona
     {
         public void actionPerformed(ActionEvent e)
         {
-            CzasKlikniecia c = new CzasKlikniecia(700,700);
+            c = new CzasKlikniecia(700,700);
             c.setVisible(true);
+        }
+    }
+
+    class pobierzTekst implements ActionListener				// definicja dzia³ania buttona
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            try
+            {
+                getTextBTN.setText(c.przekazTekst());
+            }
+            catch (Exception ex)
+            {
+                getTextBTN.setText("Nie uda³o siê pobraæ tekstu");
+            }
         }
     }
 
