@@ -17,18 +17,23 @@ public class CzasKlikniecia extends JFrame {
     Integer czas = 0;
     JLabel czasLbl;
     Integer dlugoscDmuchniecia = 0;
+    Integer potrzebnaMoc, moc = 0;
     javax.swing.Timer timer1 = new javax.swing.Timer(200, new timerListener());
     JLabel wynikKlikniecia;
+    JLabel aktualnaMoc;
+    JLabel potrzebnaMocLbl;
 
 
-    public CzasKlikniecia(int width, int height, int d)
+    public CzasKlikniecia(int width, int height, int d, int p)
     {
         super("Gra testowa");//wywo³anie konstruktora klasy nadrzêdnej JFrame z nazw¹ okienka
         setSize(width, height);
         this.dlugoscDmuchniecia = d;
+        this.potrzebnaMoc = p;
         //setLocation(x,y); //ustaw pozycjÄ™ okna
         setResizable(false); //zablokuj moÅ¼liwoÅ›Ä‡ zmian rozmiaru o
         init();
+
         setVisible(true);
     }
 
@@ -51,7 +56,18 @@ public class CzasKlikniecia extends JFrame {
         int fontSize=32;
         Font font = new Font("Helvetica", Font.BOLD, fontSize);
         wynikKlikniecia.setFont(font);
-        //add(wynikKlikniecia);
+
+        aktualnaMoc = new JLabel();
+        aktualnaMoc.setLocation(300,500);
+        aktualnaMoc.setSize(200,50);
+        aktualnaMoc.setText("Aktualna moc wynosi " + moc);
+        add(aktualnaMoc);
+
+        potrzebnaMocLbl = new JLabel();
+        potrzebnaMocLbl.setLocation(100,500);
+        potrzebnaMocLbl.setSize(200,50);
+        potrzebnaMocLbl.setText("Potrzebna moc wynosi " + potrzebnaMoc);
+        add(potrzebnaMocLbl);
 
     }
 
@@ -95,12 +111,8 @@ public class CzasKlikniecia extends JFrame {
             czas++;
             czasLbl.setText(czas.toString());
         }
-
     }
-    public void liczCzas()
-    {
 
-    }
     class timerListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e) {

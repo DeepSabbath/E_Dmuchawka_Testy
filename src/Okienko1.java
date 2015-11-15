@@ -65,7 +65,7 @@ public class Okienko1 extends JFrame{
     {
         public void actionPerformed(ActionEvent e)
         {
-            c = new CzasKlikniecia(700,700,6);
+            c = new CzasKlikniecia(700,700,6,10);
             c.setVisible(true);
         }
     }
