@@ -16,13 +16,16 @@ public class CzasKlikniecia extends JFrame {
     JButton button1;
     Integer czas = 0;
     JLabel czasLbl;
-    javax.swing.Timer timer1 = new javax.swing.Timer(1000, new timerListener());
+    Integer dlugoscDmuchniecia = 0;
+    javax.swing.Timer timer1 = new javax.swing.Timer(200, new timerListener());
+    JLabel wynikKlikniecia;
 
 
-    public CzasKlikniecia(int width, int height)
+    public CzasKlikniecia(int width, int height, int d)
     {
         super("Gra testowa");//wywo³anie konstruktora klasy nadrzêdnej JFrame z nazw¹ okienka
         setSize(width, height);
+        this.dlugoscDmuchniecia = d;
         //setLocation(x,y); //ustaw pozycjÄ™ okna
         setResizable(false); //zablokuj moÅ¼liwoÅ›Ä‡ zmian rozmiaru o
         init();
@@ -41,7 +44,15 @@ public class CzasKlikniecia extends JFrame {
         czasLbl = new JLabel("czas");
         czasLbl.setSize(100,25);
         czasLbl.setLocation(300,25);
-        add(czasLbl);
+
+        wynikKlikniecia = new JLabel();
+        wynikKlikniecia.setLocation(300,300);
+        wynikKlikniecia.setSize(200,50);
+        int fontSize=32;
+        Font font = new Font("Helvetica", Font.BOLD, fontSize);
+        wynikKlikniecia.setFont(font);
+        //add(wynikKlikniecia);
+
     }
 
     class Zdarzenie1 implements MouseListener                // definicja dzia³ania buttona
@@ -50,18 +61,19 @@ public class CzasKlikniecia extends JFrame {
 
         @Override
         public void mouseClicked(MouseEvent e) {
-//            timer1.schedule (timer1_task, 0, 500);
+
         }
 
         @Override
         public void mousePressed(MouseEvent e) {
             timer1.start();
-
+            add(czasLbl);
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-
+            add(wynikKlikniecia);
+            mierzDlugoscKlikniecia();
             timer1.stop();
         }
 
@@ -101,4 +113,13 @@ public class CzasKlikniecia extends JFrame {
         return  czasLbl.getText();
     }
 
+    public void mierzDlugoscKlikniecia() {
+        if ((czas - 5) <= dlugoscDmuchniecia && (czas + 5) >= dlugoscDmuchniecia) {
+            wynikKlikniecia.setForeground(Color.green);
+            wynikKlikniecia.setText("You WON");
+        } else {
+            wynikKlikniecia.setForeground(Color.red);
+            wynikKlikniecia.setText("Przegrales");
+        }
+    }
 }
