@@ -74,7 +74,7 @@ public class CzasKlikniecia extends JFrame {
 
     class Zdarzenie1 implements MouseListener                // definicja dzia³ania buttona
     {
-        MyTimerTask timer1_task = new MyTimerTask();
+//        MyTimerTask timer1_task = new MyTimerTask();
 
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -104,15 +104,15 @@ public class CzasKlikniecia extends JFrame {
 
         }
     }
-
-    class MyTimerTask extends TimerTask
-    {
-        public void run()
-        {
-            czas++;
-            czasLbl.setText(czas.toString());
-        }
-    }
+//
+//    class MyTimerTask extends TimerTask
+//    {
+//        public void run()
+//        {
+//            czas++;
+//            czasLbl.setText(czas.toString());
+//        }
+//    }
 
     class timerListener implements ActionListener
     {
@@ -127,9 +127,9 @@ public class CzasKlikniecia extends JFrame {
     }
 
     public void mierzDlugoscKlikniecia() {
-        if ((czas - 5) <= dlugoscDmuchniecia && (czas + 5) >= dlugoscDmuchniecia) {
+        if ((czas - 2) <= dlugoscDmuchniecia && (czas + 2) >= dlugoscDmuchniecia) {
             wynikKlikniecia.setForeground(Color.green);
-            wynikKlikniecia.setText("You WON");
+            wynikKlikniecia.setText("Wygrales");
         } else {
             wynikKlikniecia.setForeground(Color.red);
             wynikKlikniecia.setText("Przegrales");
