@@ -38,7 +38,7 @@ public class Okienko1 extends JFrame{
         add(button1);                                       // dodanie buttona do okienka
 
 
-        label1 = new JLabel();
+        label1 = new JLabel("jakis tekst");
         label1.setLocation(200,200);
         label1.setSize(100,50);
         add(label1);
