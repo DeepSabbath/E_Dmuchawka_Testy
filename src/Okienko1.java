@@ -15,6 +15,7 @@ public class Okienko1 extends JFrame{
     static JButton button2;
     JButton button3;
     JButton getTextBTN;
+    JButton grafikaBTN;
     CzasKlikniecia c;
 
     public Okienko1(int width, int height)
@@ -59,6 +60,12 @@ public class Okienko1 extends JFrame{
         getTextBTN.setSize(120,120);
         getTextBTN.addActionListener(new pobierzTekst());
         add(getTextBTN);
+
+        grafikaBTN = new JButton("Grafika");
+        grafikaBTN.setLocation(50,510);
+        grafikaBTN.setSize(100,100);
+        grafikaBTN.addActionListener(new otworzGrafiki());
+        add(grafikaBTN);
     }
 
     class Zdarzenie1 implements ActionListener				// definicja dzia³ania buttona
@@ -101,6 +108,15 @@ public class Okienko1 extends JFrame{
 
             }
             o.setVisible(true);
+        }
+    }
+
+    class otworzGrafiki implements ActionListener				// definicja dzia³ania buttona
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            Grafika g = new Grafika(500,500);
+            g.setVisible(true);
         }
     }
 

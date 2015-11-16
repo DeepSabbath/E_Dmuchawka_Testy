@@ -17,7 +17,8 @@ public class CzasKlikniecia extends JFrame {
     Integer czas = 0;
     JLabel czasLbl;
     Integer dlugoscDmuchniecia = 0;
-    Integer potrzebnaMoc, moc = 0;
+    Integer potrzebnaMoc = 0;
+    Integer moc = 5;
     javax.swing.Timer timer1 = new javax.swing.Timer(200, new timerListener());
     JLabel wynikKlikniecia;
     JLabel aktualnaMoc;
